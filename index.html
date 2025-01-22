@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <style>
+      body{    
+        background-image: linear-gradient(70deg, rgb(32, 21, 46) 0%, rgb(51, 22, 122) 100%);
+      }
+    input[type=button]
+    {
+      background-color:red;color:white;border-radius:30px;width:100%;height:40px;font-size:20px;text-align:center;
+    }
+        
+    .noselect {
+      -webkit-touch-callout: none; /* iOS Safari */
+        -webkit-user-select: none; /* Safari */
+         -khtml-user-select: none; /* Konqueror HTML */
+           -moz-user-select: none; /* Firefox */
+            -ms-user-select: none; /* Internet Explorer/Edge */
+                user-select: none; /* Non-prefixed version, currently
+                                      supported by Chrome and Opera */
+    }
+    .noselect h1 {
+        font-weight: bold;
+      }
+
+      td {
+        color: #d3d3d3;
+      }
+    .slidecontainer {
+      width: 100%;
+    }
+
+    .slider {
+      -webkit-appearance: none;
+      width: 100%;
+      height: 20px;
+      border-radius: 5px;
+      background: #d3d3d3;
+      outline: none;
+      opacity: 0.7;
+      -webkit-transition: .2s;
+      transition: opacity .2s;
+    }
+
+    .slider:hover {
+      opacity: 1;
+    }
+  
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: red;
+      cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: red;
+      cursor: pointer;
+    }
+    .help-section {
+      color: #f0c77b;
+      text-align: center;
+      margin-top: 30px;
+      font-size: 18px;
+    }
+
+    .slider-value {
+      color: white;
+      font-size: 20px;
+      margin-left: 10px;
+    }
+
+    .blurred {
+      filter: blur(100px);
+      pointer-events: none;
+    }
+
+    .login-container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-image: linear-gradient(100deg, rgb(20, 50, 70) 0%, rgb(0, 100, 80) 100%);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+      color:rgb(255, 254, 254);
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="password"] {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container input[type="button"] {    
+      background-image: linear-gradient(180deg, rgb(27, 57, 30) 0%, rgb(59, 157, 52) 100%); 
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .login-container input[type="button"]:hover {
+      background-color: darkgreen;
+    }
+
+    </style>
+  
+  </head>
+  <body class="noselect" align="center" >
+    <div id="content" class="blurred">
+    <h1 style="color: #fddc58;text-align:center;">Andromorphic Robotic Arm</h1>
+    <h2 style="color: rgb(150, 157, 157);text-align:center;">Group - 08</h2>
+    
+    <table id="mainTable" style="width:400px;margin:auto;table-layout:fixed" CELLSPACING=10>
+        <tr></tr>
+        <tr></tr> 
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Gripper:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Gripper" oninput='updateSliderValue(this)' oninput='sendButtonInput("Gripper",value)'>
+            <span class="slider-value" id="GripperValue">90</span>
+          </div>
+        </td>
+      </tr> 
+      <tr></tr>
+      <tr></tr> 
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Elbow:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Elbow" oninput='updateSliderValue(this)' oninput='sendButtonInput("Elbow",value)'>
+            <span class="slider-value" id="ElbowValue">90</span>
+          </div>
+        </td>
+      </tr> 
+      <tr></tr>
+      <tr></tr>      
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Shoulder:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Shoulder" oninput='updateSliderValue(this)' oninput='sendButtonInput("Shoulder",value)'>
+            <span class="slider-value" id="ShoulderValue">90</span>
+          </div>
+        </td>
+      </tr>  
+      <tr></tr>
+      <tr></tr>    
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Base:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Base"  oninput='updateSliderValue(this)' oninput='sendButtonInput("Base",value)'>
+            <span class="slider-value" id="BaseValue">90</span>
+          </div>
+        </td>
+      </tr> 
+      <tr></tr>
+      <tr></tr> 
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Thumb:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger1"  oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger1",value)'>
+            <span class="slider-value" id="Finger1Value">90</span>
+          </div>
+        </td>
+      </tr> 
+      <tr></tr>
+      <tr></tr> 
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Index Finger:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger2" 
+            oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger2",value)'>
+            <span class="slider-value" id="Finger2Value">90</span>
+          </div>
+        </td>
+      </tr> 
+     
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Middle Finger:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger3" 
+            oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger3",value)'>
+            <span class="slider-value" id="Finger3Value">90</span>
+          </div>
+        </td>
+      </tr> 
+      
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Ring Finger:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger4" 
+            oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger4",value)'>
+            <span class="slider-value" id="Finger4Value">90</span>
+          </div>
+        </td>
+      </tr> 
+    
+       
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Pinky Finger:</b></td>
+        <td colspan=2>
+         <div class="slidecontainer">
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger5" oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger5",value)'>
+            <span class="slider-value" id="Finger5Value">90</span>
+          </div>
+        </td>
+      </tr> 
+      <tr></tr>
+      <tr>
+        <td colspan=3>
+          <input type="button" value="Reset" onclick='resetAll()'>
+        </td>
+      </tr>
+      <tr></tr>
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Record:</b></td>
+        <td><input type="button" id="Record" value="OFF" ontouchend='onclickButton(this)'></td>
+        <td></td>
+      </tr>
+      <tr></tr>
+      
+      <tr>
+        <td style="text-align:left;font-size:25px"><b>Play:</b></td>
+        <td><input type="button" id="Play" value="OFF" ontouchend='onclickButton(this)'></td>
+        <td></td>
+      </tr>      
+    </table>
+  <div>
+    <b><b></b></b><h1 style="color: #f0c77b; text-align: center; font-size: 30px">Developed by</h1>
+    <h1 style="color: rgb(209, 217, 217); text-align: center; font-size: 25px">Sagor Das</h1>
+    <h1 style="color: rgb(209, 217, 217); text-align: center; font-size: 25px">Sanzida Afrin</h1>
+    <h1 style="color: rgb(209, 217, 217); text-align: center; font-size: 25px">Tamzid Islam</h1>
+    <h1 style="color: rgb(209, 217, 217) ;text-align: center; font-size: 25px">Samia Akter Mou</h1>
+    <h1 style="color: rgb(209, 217, 217); text-align: center; font-size: 25px">Maria Haque Eva</h1>
+    </div>
+  </div>
+
+    <div id="login" class="login-container">
+      <h2>Welcome to Andromorphic Robotic Arm</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+      <p></p>
+      <input type="button" value="Login" onclick="authenticate()">
+    </div>
+    
+    <script>
+      var webSocketRobotArmInputUrl = "ws:\/\/" + window.location.hostname + "/RobotArmInput";      
+      var websocketRobotArmInput;
+      
+      function initRobotArmInputWebSocket() 
+      {
+        websocketRobotArmInput = new WebSocket(webSocketRobotArmInputUrl);
+        websocketRobotArmInput.onopen    = function(event){};
+        websocketRobotArmInput.onclose   = function(event){setTimeout(initRobotArmInputWebSocket, 2000);};
+        websocketRobotArmInput.onmessage    = function(event)
+        {
+          var keyValue = event.data.split(",");
+          var button = document.getElementById(keyValue[0]);
+          button.value = keyValue[1];
+          if (button.id == "Record" || button.id == "Play")
+          {
+            button.style.backgroundColor = (button.value == "ON" ? "green" : "red");  
+            enableDisableButtonsSliders(button);
+          }
+        };
+      }
+      
+      function sendButtonInput(key, value) 
+      {
+        var data = key + "," + value;
+        websocketRobotArmInput.send(data);
+      }
+      function updateSliderValue(slider) {
+        var sliderValueSpan = document.getElementById(slider.id + "Value");
+        sliderValueSpan.textContent = slider.value;
+      }
+
+      function resetAll() {
+        var sliders = document.querySelectorAll(".slider");
+        sliders.forEach(slider => {
+          slider.value = 90;
+          updateSliderValue(slider);
+          sendButtonInput(slider.id, 90);
+        });
+        var buttons = ["Record", "Play"];
+        buttons.forEach(buttonId => {
+          var button = document.getElementById(buttonId);
+          button.value = "OFF";
+          button.style.backgroundColor = "red";
+        });
+      }
+        
+      function onclickButton(button) 
+      {
+        button.value = (button.value == "ON") ? "OFF" : "ON" ;        
+        button.style.backgroundColor = (button.value == "ON" ? "green" : "red");          
+        var value = (button.value == "ON") ? 1 : 0 ;
+        sendButtonInput(button.id, value);
+        enableDisableButtonsSliders(button);
+      }
+      
+      function enableDisableButtonsSliders(button)
+      {
+        if(button.id == "Play")
+        {
+          var disabled = "auto";
+          if (button.value == "ON")
+          {
+            disabled = "none";            
+          }
+          document.getElementById("Gripper").style.pointerEvents = disabled;
+          document.getElementById("Elbow").style.pointerEvents = disabled;          
+          document.getElementById("Shoulder").style.pointerEvents = disabled;          
+          document.getElementById("Base").style.pointerEvents = disabled; 
+          document.getElementById("Finger1").style.pointerEvents = disabled;
+          document.getElementById("Finger2").style.pointerEvents = disabled;
+          document.getElementById("Finger3").style.pointerEvents = disabled;
+          document.getElementById("Finger4").style.pointerEvents = disabled;
+          document.getElementById("Finger5").style.pointerEvents = disabled;
+          document.getElementById("Record").style.pointerEvents = disabled;
+        }
+        if(button.id == "Record")
+        {
+          var disabled = "auto";
+          if (button.value == "ON")
+          {
+            disabled = "none";            
+          }
+          document.getElementById("Play").style.pointerEvents = disabled;
+        }        
+      }
+      
+      function authenticate() {
+  // List of valid usernames and passwords
+  const users = [
+    { username: "sagor", password: "46" },
+    { username: "sanzida", password: "49" },
+    { username: "tamzid", password: "58" },
+    { username: "eva", password: "26" },
+    { username: "mou", password: "48" }
+  ];
+  
+  // Get input values
+  const username = document.getElementById("username").value;
+  const password = document.getElementById("password").value;
+
+  // Check if the entered credentials match any user
+  const isValidUser = users.some(user => user.username === username && user.password === password);
+
+  if (isValidUser) {
+    document.getElementById("login").style.display = "none";
+    document.getElementById("content").classList.remove("blurred");
+  } else {
+    alert("Invalid username or password. Try again.");
+  }
+}
+
+      
+      window.onload = initRobotArmInputWebSocket;
+      document.getElementById("mainTable").addEventListener("touchend", function(event){
+        event.preventDefault()
+      });      
+    </script>
+  </body>    
+</html>
