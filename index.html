@@ -89,10 +89,10 @@
     var pivot_x = 200, pivot_y = 200;
     var bracket_radius = 160;
     var click_state = 0;
-    var last_angle = [0, 0, 0, 0, 0, 0];
+    var last_angle = [0, 0, 0, 0, 0, 0,0, 0] ;
     var mouse_xyra = { x: 0, y: 0, r: 0.0, a: 0.0 };
     var ws;
-    var bracket_angle = [0, 0, 0, 0, 0, 0];
+    var bracket_angle = [0, 0, 0, 0, 0, 0 ,0, 0 ];
 
     var bracket_img = new Image();
     bracket_img.src = "https://esp32io.com/images/tutorial/servo-bracket.png";
@@ -279,42 +279,42 @@
     <div class="servo-row">
         <div class="servo-container">
             <canvas id="servo0"></canvas>
-            <p>Wrist <span id="debug0" style="color:#fddc58"></span></p>
+            <p>Wrist <span id="debug0" style="color:#fddc58">90</span></p>
         </div>
         <div class="servo-container">
             <canvas id="servo1"></canvas>
-            <p>Thumb <span id="debug1" style="color:#fddc58"></span></p>
+            <p>Thumb <span id="debug1" style="color:#fddc58">90</span></p>
         </div>
     </div>
     <div class="servo-row">
         <div class="servo-container">
             <canvas id="servo2"></canvas>
-            <p>Index Finger <span id="debug2" style="color:#fddc58"></span></p>
+            <p>Index Finger <span id="debug2" style="color:#fddc58">90</span></p>
         </div>
         <div class="servo-container">
             <canvas id="servo3"></canvas>
-            <p>Middle Finger <span id="debug3" style="color:#fddc58"></span></p>
+            <p>Middle Finger <span id="debug3" style="color:#fddc58">90</span></p>
         </div>
     </div>
     <div class="servo-row">
         <div class="servo-container">
             <canvas id="servo4"></canvas>
-            <p>Ring Finger <span id="debug4" style="color:#fddc58"></span></p>
+            <p>Ring Finger <span id="debug4" style="color:#fddc58">90</span></p>
         </div>
         <div class="servo-container">
             <canvas id="servo5"></canvas>
-            <p>Pinky Finger <span id="debug5" style="color:#fddc58"></span></p>
+            <p>Pinky Finger <span id="debug5" style="color:#fddc58">90</span></p>
         </div>
     </div>
 </div>
 <div class="servo-row">
     <div class="servo-container">
         <canvas id="servo6"></canvas>
-        <p>Shoulder <span id="debug6" style="color:#fddc58"></span></p>
+        <p>Shoulder <span id="debug6" style="color:#fddc58">90</span></p>
     </div>
     <div class="servo-container">
         <canvas id="servo7"></canvas>
-        <p>Elbow <span id="debug7" style="color:#fddc58"></span></p>
+        <p>Elbow <span id="debug7" style="color:#fddc58">90</span></p>
     </div>
 </div>
     <div>
