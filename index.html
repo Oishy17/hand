@@ -131,7 +131,7 @@
         <td style="text-align:left;font-size:25px"><b>Gripper:</b></td>
         <td colspan=2>
          <div class="slidecontainer">
-            <input type="range" min="0" max="180" value="90" class="slider" id="Gripper" oninput='updateSliderValue(this)' oninput='sendButtonInput("Gripper",value)'>
+            <input type="range" min="0" max="180" value="90" class="slider" id="Gripper" oninput='updateSliderValue(this)' >
             <span class="slider-value" id="GripperValue">90</span>
           </div>
         </td>
@@ -142,7 +142,7 @@
         <td style="text-align:left;font-size:25px"><b>Elbow:</b></td>
         <td colspan=2>
          <div class="slidecontainer">
-            <input type="range" min="0" max="180" value="90" class="slider" id="Elbow" oninput='updateSliderValue(this)' oninput='sendButtonInput("Elbow",value)'>
+            <input type="range" min="0" max="180" value="90" class="slider" id="Elbow" oninput='updateSliderValue(this)'>
             <span class="slider-value" id="ElbowValue">90</span>
           </div>
         </td>
@@ -153,7 +153,7 @@
         <td style="text-align:left;font-size:25px"><b>Shoulder:</b></td>
         <td colspan=2>
          <div class="slidecontainer">
-            <input type="range" min="0" max="180" value="90" class="slider" id="Shoulder" oninput='updateSliderValue(this)' oninput='sendButtonInput("Shoulder",value)'>
+            <input type="range" min="0" max="180" value="90" class="slider" id="Shoulder" oninput='updateSliderValue(this)'>
             <span class="slider-value" id="ShoulderValue">90</span>
           </div>
         </td>
@@ -164,7 +164,7 @@
         <td style="text-align:left;font-size:25px"><b>Base:</b></td>
         <td colspan=2>
          <div class="slidecontainer">
-            <input type="range" min="0" max="180" value="90" class="slider" id="Base"  oninput='updateSliderValue(this)' oninput='sendButtonInput("Base",value)'>
+            <input type="range" min="0" max="180" value="90" class="slider" id="Base"  oninput='updateSliderValue(this)'>
             <span class="slider-value" id="BaseValue">90</span>
           </div>
         </td>
@@ -175,7 +175,7 @@
         <td style="text-align:left;font-size:25px"><b>Thumb:</b></td>
         <td colspan=2>
          <div class="slidecontainer">
-            <input type="range" min="0" max="180" value="90" class="slider" id="Finger1"  oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger1",value)'>
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger1"  oninput='updateSliderValue(this)' >
             <span class="slider-value" id="Finger1Value">90</span>
           </div>
         </td>
@@ -187,7 +187,7 @@
         <td colspan=2>
          <div class="slidecontainer">
             <input type="range" min="0" max="180" value="90" class="slider" id="Finger2" 
-            oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger2",value)'>
+            oninput='updateSliderValue(this)' >
             <span class="slider-value" id="Finger2Value">90</span>
           </div>
         </td>
@@ -198,7 +198,7 @@
         <td colspan=2>
          <div class="slidecontainer">
             <input type="range" min="0" max="180" value="90" class="slider" id="Finger3" 
-            oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger3",value)'>
+            oninput='updateSliderValue(this)'>
             <span class="slider-value" id="Finger3Value">90</span>
           </div>
         </td>
@@ -209,7 +209,7 @@
         <td colspan=2>
          <div class="slidecontainer">
             <input type="range" min="0" max="180" value="90" class="slider" id="Finger4" 
-            oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger4",value)'>
+            oninput='updateSliderValue(this)' >
             <span class="slider-value" id="Finger4Value">90</span>
           </div>
         </td>
@@ -220,17 +220,11 @@
         <td style="text-align:left;font-size:25px"><b>Pinky Finger:</b></td>
         <td colspan=2>
          <div class="slidecontainer">
-            <input type="range" min="0" max="180" value="90" class="slider" id="Finger5" oninput='updateSliderValue(this)' oninput='sendButtonInput("Finger5",value)'>
+            <input type="range" min="0" max="180" value="90" class="slider" id="Finger5" oninput='updateSliderValue(this)'>
             <span class="slider-value" id="Finger5Value">90</span>
           </div>
         </td>
       </tr> 
-      <tr></tr>
-      <tr>
-        <td colspan=3>
-          <input type="button" value="Reset" onclick='resetAll()'>
-        </td>
-      </tr>
       <tr></tr>
       <tr>
         <td style="text-align:left;font-size:25px"><b>Record:</b></td>
@@ -293,23 +287,9 @@
       function updateSliderValue(slider) {
         var sliderValueSpan = document.getElementById(slider.id + "Value");
         sliderValueSpan.textContent = slider.value;
+        sendButtonInput(slider.id, slider.value);
       }
 
-      function resetAll() {
-        var sliders = document.querySelectorAll(".slider");
-        sliders.forEach(slider => {
-          slider.value = 90;
-          updateSliderValue(slider);
-          sendButtonInput(slider.id, 90);
-        });
-        var buttons = ["Record", "Play"];
-        buttons.forEach(buttonId => {
-          var button = document.getElementById(buttonId);
-          button.value = "OFF";
-          button.style.backgroundColor = "red";
-        });
-      }
-        
       function onclickButton(button) 
       {
         button.value = (button.value == "ON") ? "OFF" : "ON" ;        
@@ -357,7 +337,8 @@
     { username: "sanzida", password: "49" },
     { username: "tamzid", password: "58" },
     { username: "eva", password: "26" },
-    { username: "mou", password: "48" }
+    { username: "mou", password: "48" },
+    { username: "user", password: "1234" },
   ];
   
   // Get input values
@@ -374,7 +355,6 @@
     alert("Invalid username or password. Try again.");
   }
 }
-
       
       window.onload = initRobotArmInputWebSocket;
       document.getElementById("mainTable").addEventListener("touchend", function(event){
